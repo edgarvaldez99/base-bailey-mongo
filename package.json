@@ -2,10 +2,11 @@
   "name": "base-bailey-mongo",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "dist/main.js",
   "scripts": {
     "pre-copy": "cd .. && npm run  copy.lib base-baileys-mongo",
-    "start": "node app.js"
+    "build": "npx tsc",
+    "start": "node dist/main.js"
   },
   "keywords": [],
   "dependencies": {
@@ -21,5 +22,9 @@
     "wa-sticker-formatter": "4.3.2"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.6.2",
+    "typescript": "^5.2.2"
+  }
 }
