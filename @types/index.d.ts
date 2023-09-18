@@ -1,5 +1,3 @@
-// @types/index.d.ts
-
 declare module "@bot-whatsapp/database/mongo" {
   interface MongoAdapterOptions {
     dbUri: string;
@@ -22,20 +20,54 @@ declare module "@bot-whatsapp/portal" {
 declare module "@bot-whatsapp/bot" {
   export interface AnswerOptions {
     media?: string | null;
+    sensitive?: boolean;
     buttons?: Array<any>;
     capture?: boolean;
     child?: string | null;
     delay?: number;
+    keyword?: {};
+    callback?: boolean;
+    nested?: any[];
+  }
+
+  export interface JsonContext {
+    ref: string;
+    keyword: string | any[];
+    options: {
+      sensitive: boolean;
+      regex: any;
+    };
+  }
+
+  export interface ContextOptions {
+    sensitive?: boolean;
+    regex?: any;
+  }
+
+  export interface Context {
+    from: string;
+    ref: string;
+    keyword: string | any[];
+    answer: string[];
+    json?: JsonContext[];
+    options?: ContextOptions;
+    callbacks?: Function | null;
   }
 
   export interface FlowContext {
+    ctx: Context;
+    ref: string;
     addAnswer: (
-      answer: string[],
-      options: AnswerOptions,
+      answer: string | string[],
+      options?: AnswerOptions,
       cb?: Function | null,
       nested?: Function[]
     ) => this;
-    addAction: (cb: () => null, flagCb: () => null) => this;
+    addAction: (
+      cb?: (ctx?: any, options?: any) => void,
+      flagCb?: () => void
+    ) => this;
+    toJson: () => this;
   }
 
   export interface BotOptions {
@@ -54,5 +86,12 @@ declare module "@bot-whatsapp/bot" {
     database: any;
   }): any;
 
-  export function addKeyword(keywords: string[]): FlowContext;
+  export function addKeyword(
+    keywords: string | string[],
+    options?: ContextOptions
+  ): FlowContext;
+
+  export enum EVENTS {
+    WELCOME = "",
+  }
 }

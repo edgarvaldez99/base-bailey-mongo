@@ -1,21 +1,17 @@
-import BotWhatsapp from "@bot-whatsapp/bot";
-import flowDocs from "./docs";
-import flowGracias from "./thanks";
-import flowTuto from "./tutotial";
-import flowDiscord from "./discord";
+import { addKeyword, EVENTS } from "@bot-whatsapp/bot";
 
-const flowPrincipal = BotWhatsapp.addKeyword(["hola", "ole", "alo", "op"])
-  .addAnswer("🙌 Hola bienvenido a este *Chatbot*")
-  .addAnswer(
-    [
-      "te comparto los siguientes links de interes sobre el proyecto",
-      "👉 *doc* para ver la documentación",
-      "👉 *gracias*  para ver la lista de videos",
-      "👉 *discord* unirte al discord",
-    ],
-    null,
-    null,
-    [flowDocs, flowGracias, flowTuto, flowDiscord]
-  );
+const flowPrincipal = addKeyword(EVENTS.WELCOME)
+  .addAnswer([
+    "Bivenido a *Móvil Tech*",
+    "Reparacion de celulares iPhone y otras marcas",
+  ])
+  .addAnswer([
+    "¿Como podemos ayudarte?",
+    "",
+    "*1* Ver estatus de reparacion",
+    "*2* Deparamento ventas",
+    "*3* Administracion",
+  ])
+  .addAnswer("Responda con el numero de la opcion!");
 
 export default flowPrincipal;
