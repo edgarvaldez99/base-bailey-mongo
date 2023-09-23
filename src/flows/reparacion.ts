@@ -4,8 +4,7 @@ import { join } from "path";
 import ChatGPTClass from "../openai/chatgpt";
 import { getTickets } from "../services/tickets.service";
 import { getUser } from "../services/users.service";
-
-const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+import { delay } from "src/utils/delay";
 
 const getPrompt = async () => {
   const pathPromp = join(process.cwd(), "promps");
@@ -40,9 +39,9 @@ const flowReparacion = (chatgptClass: ChatGPTClass) => {
       const listTickets = lastTicket
         .map(
           (i) =>
-            `ID_REF:${i._id ?? ""}, cliente:${user?.username}, model:${
+            `ID_REF: ${i._id ?? ""}, cliente: ${user?.username}, model: ${
               i.model
-            }, description: ${i.description}, status:${i.status}`
+            }, description: ${i.description}, status: ${i.status}`
         )
         .join("\n");
 

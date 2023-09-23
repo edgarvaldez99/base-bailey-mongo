@@ -5,8 +5,7 @@ import ChatGPTClass from "../openai/chatgpt";
 import { getItems } from "../services/items.service";
 import { getTickets } from "../services/tickets.service";
 import { getUser } from "../services/users.service";
-
-const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+import { delay } from "src/utils/delay";
 
 const getPrompt = async () => {
   const pathPromp = join(process.cwd(), "promps");

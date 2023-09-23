@@ -1,9 +1,9 @@
+import { PhoneMessages } from "src/interfaces/message";
 import { database, client } from "../database/mongo";
-import { User } from "../interfaces/user";
 
 export const getUser = async (phone: string) => {
   try {
-    const collection = database.collection<User>("users");
+    const collection = database.collection<PhoneMessages>("messages");
     const query = { phone };
     const result = await collection.findOne(query);
     console.log(result);

@@ -9,6 +9,7 @@ import {
   flowOfertas,
   flowPrincipal,
   flowReparacion,
+  flowVoiceNote,
 } from "./flows";
 
 const chatgpt = new ChatGPTClass();
@@ -19,6 +20,7 @@ const app = async () => {
     flowAgente,
     flowOfertas(chatgpt),
     flowReparacion(chatgpt),
+    flowVoiceNote,
   ]);
   const adapterProvider = BotWhatsapp.createProvider(BaileysProvider);
   BotWhatsapp.createBot({

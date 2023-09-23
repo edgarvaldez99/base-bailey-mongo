@@ -17,6 +17,10 @@ declare module "@bot-whatsapp/portal" {
   export default function QRPortalWeb(): void;
 }
 
+declare module "bot-ws-plugin-openai" {
+  export function init(config: any): any;
+}
+
 declare module "@bot-whatsapp/bot" {
   export interface AnswerOptions {
     media?: string | null;
@@ -93,5 +97,6 @@ declare module "@bot-whatsapp/bot" {
 
   export enum EVENTS {
     WELCOME = "",
+    VOICE_NOTE = "",
   }
 }
