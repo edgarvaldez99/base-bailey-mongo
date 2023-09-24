@@ -1,8 +1,9 @@
-import { downloadMediaMessage } from '@adiwajshing/baileys';
-import fs from 'node:fs/promises';
-import { convertOggMp3 } from './convert-ogg-to-mp3';
-import { voiceToText } from '../openai/whisper';
+import { downloadMediaMessage } from "@whiskeysockets/baileys";
+import fs from "node:fs/promises";
+import { convertOggMp3 } from "./convert-ogg-to-mp3";
+import { voiceToText } from "../openai/whisper";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getTextFromAI = async (ctx: any) => {
   const buffer = await downloadMediaMessage(ctx, "buffer", {});
   const pathTmpOgg = `${process.cwd()}/tmp/voice-note-${Date.now()}.ogg`;

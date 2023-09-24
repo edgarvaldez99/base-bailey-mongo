@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { addKeyword } from "@bot-whatsapp/bot";
 
 const flowAgente = addKeyword("AGENTE", { sensitive: true })

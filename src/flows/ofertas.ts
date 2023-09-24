@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { addKeyword } from "@bot-whatsapp/bot";
 import { readFileSync } from "fs";
 import { join } from "path";
@@ -5,7 +6,7 @@ import ChatGPTClass from "../openai/chatgpt";
 import { getItems } from "../services/items.service";
 import { getTickets } from "../services/tickets.service";
 import { getUser } from "../services/users.service";
-import { delay } from "src/utils/delay";
+import { delay } from "../utils/delay";
 
 const getPrompt = async () => {
   const pathPromp = join(process.cwd(), "promps");
@@ -56,7 +57,7 @@ const flowOfertas = (chatgptClass: ChatGPTClass) => {
       await refProvider.sendPresenceUpdate("paused", jid);
 
       const textFromAI = await chatgptClass.handleMsgChatGPT(
-        `modelo_telefono="${model}", cliente="${user?.username}", lista_de_articulos="${listItems}"`
+        `modelo_telefono="${model}", cliente="${user?.username}", lista_de_articulos="${listItems}"`,
       );
 
       console.log(textFromAI.text);
@@ -69,7 +70,7 @@ const flowOfertas = (chatgptClass: ChatGPTClass) => {
       async (ctx: any, { fallBack }: any) => {
         const textFromAI = await chatgptClass.handleMsgChatGPT(ctx.body);
         await fallBack(textFromAI.text);
-      }
+      },
     );
 };
 

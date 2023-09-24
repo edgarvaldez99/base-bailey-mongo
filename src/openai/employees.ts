@@ -1,5 +1,5 @@
 import { env } from "node:process";
-import { init } from "vir";
+import { init } from "bot-ws-plugin-openai";
 
 const employeesAddonConfig = {
   model: "gpt-4-0613",

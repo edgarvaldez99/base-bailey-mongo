@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { env } from "node:process";
 
 class ChatGPTClass {
@@ -6,7 +7,9 @@ class ChatGPTClass {
   openai: any | undefined;
 
   constructor() {
-    this.init().then();
+    this.init()
+      .then((r) => r)
+      .catch(() => {});
   }
 
   init = async (): Promise<void> => {

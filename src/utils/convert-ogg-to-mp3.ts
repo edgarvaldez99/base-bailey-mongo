@@ -6,7 +6,7 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 
 export const convertOggMp3 = async (
   inputStream: string | Readable,
-  outStream: string
+  outStream: string,
 ): Promise<boolean> => {
   return new Promise((resolve) => {
     ffmpeg(inputStream)

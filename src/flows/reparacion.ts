@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { addKeyword } from "@bot-whatsapp/bot";
 import { readFileSync } from "fs";
 import { join } from "path";
@@ -41,7 +42,7 @@ const flowReparacion = (chatgptClass: ChatGPTClass) => {
           (i) =>
             `ID_REF: ${i._id ?? ""}, cliente: ${user?.username}, model: ${
               i.model
-            }, description: ${i.description}, status: ${i.status}`
+            }, description: ${i.description}, status: ${i.status}`,
         )
         .join("\n");
 
@@ -50,7 +51,7 @@ const flowReparacion = (chatgptClass: ChatGPTClass) => {
       await chatgptClass.handleMsgChatGPT(data); //Dicinedole actua!!
 
       const textFromAI = await chatgptClass.handleMsgChatGPT(
-        `cliente=${user?.username}, lista_de_reparaciones="${listTickets}"`
+        `cliente=${user?.username}, lista_de_reparaciones="${listTickets}"`,
       );
 
       await flowDynamic(textFromAI.text);
@@ -65,7 +66,7 @@ const flowReparacion = (chatgptClass: ChatGPTClass) => {
           const textFromAI = await chatgptClass.handleMsgChatGPT(ctx.body);
           await fallBack(textFromAI.text);
         }
-      }
+      },
     );
 };
 

@@ -2,7 +2,6 @@ import { addKeyword, EVENTS } from "@bot-whatsapp/bot";
 import { employeesAddon } from "src/openai/employees";
 import { getTextFromAI } from "src/utils/text-from-ai";
 
-
 const flowVoiceNote = addKeyword(EVENTS.VOICE_NOTE).addAction(
   async (ctx, ctxFn) => {
     await ctxFn.flowDynamic("dame un momento para escucharte...🙉");
@@ -14,7 +13,7 @@ const flowVoiceNote = addKeyword(EVENTS.VOICE_NOTE).addAction(
     const { employee, answer } = await employeesAddon.determine(fullSentence);
     ctxFn.state.update({ answer });
     employeesAddon.gotoFlow(employee, ctxFn);
-  }
+  },
 );
 
 export default flowVoiceNote;

@@ -1,5 +1,3 @@
-import { ObjectId } from "mongodb";
-
 export interface Ticket {
   userId: string;
   name: string;

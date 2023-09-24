@@ -17,6 +17,7 @@ export const voiceToText = async (path: string): Promise<string> => {
     });
 
     return resp.text;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     if (error instanceof OpenAI.APIError) {
       console.error(error.status); // e.g. 401

@@ -10,7 +10,7 @@ import {
   flowPrincipal,
   flowReparacion,
   flowVoiceNote,
-} from "./flows";
+} from "./flows/index";
 
 const chatgpt = new ChatGPTClass();
 
